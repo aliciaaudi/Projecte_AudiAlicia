@@ -20,7 +20,7 @@ public class Projecte_AudíAlícia {
         Scanner entrada = new Scanner(System.in);
 
         int opcio_menu;
-        boolean omplert = true;
+        boolean omplert = false;
 
         String model = null;
         int pantalla = 0;
