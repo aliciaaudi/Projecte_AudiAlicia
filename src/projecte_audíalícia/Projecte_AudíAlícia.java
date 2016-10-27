@@ -18,15 +18,17 @@ public class Projecte_AudíAlícia {
      */
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
+        Scanner entrada2 = new Scanner(System.in);
 
         int opcio_menu;
         boolean omplert = false;
+        char tactil;
 
         String model = null;
-        int pantalla = 0;
+        double pantalla = 0.0;
         boolean esTactil = false;
         String sistemaOp = null;
-        double megapixels = 0;
+        double megapixels = 0.0;
         int ram = 0;
 
         do {    //Ho posem dins d'un do - while per demanar-nos la opció fins que no sigui 0
@@ -51,6 +53,51 @@ public class Projecte_AudíAlícia {
                     System.out.println("El programa ha finalitzat... Adéu!!!");
                     break;
                 case 1:
+                    if (!omplert) { // Equival a omplert == false
+
+                        System.out.println("Introdueix el model del Smartphone:");
+                        model = entrada.nextLine();
+
+                        do {
+                            System.out.println("Introdueix les polzades (pantalla):");
+                            System.out.println("Per posar decimals, indicar-ho en una ','");
+                            pantalla = entrada2.nextDouble();
+
+                            if (pantalla < 3.5) {
+                                System.out.println("Valor incorrecte!");
+                            }
+                        } while (pantalla < 3.5);
+
+                        do {
+                            System.out.println("És tàctil? (S/N)");
+                            tactil = entrada.nextLine().charAt(0);
+
+                            if (tactil == 's' || tactil == 'S') {
+                                esTactil = true;
+                            }
+
+                            if (tactil == 'n' || tactil == 'N') {
+                                esTactil = false;
+                            }
+                        } while (tactil != 's' && tactil != 'n' && tactil != 'S' && tactil != 'N');
+
+                        System.out.println("Quin sistema operatiu té?");
+                        sistemaOp = entrada.nextLine();
+
+                        System.out.println("Quants megapíxels té la càmera?");
+                        megapixels = entrada2.nextDouble();
+
+                        System.out.println("Quanta RAM té?");
+                        ram = entrada.nextInt();
+
+                        omplert = true; // Un cop hem omplert els camps, canviem la variable a true
+                    } else {
+                        System.out.println("Ja has introduït dades per a aquest element!");
+                        System.out.println("Si vols omplir-lo, modifical o esborra'l.");
+
+                    }
+
+                    break;
 
                 case 2:
 
@@ -59,7 +106,6 @@ public class Projecte_AudíAlícia {
                 case 4:
 
             }
-
         } while (opcio_menu != 0);
 
     }
