@@ -20,6 +20,7 @@ public class Projecte_AudíAlícia {
         Scanner entrada = new Scanner(System.in);
 
         int opcio_menu;
+        boolean omplert = false;
 
         String model = null;
         int pantalla = 0;
@@ -29,7 +30,7 @@ public class Projecte_AudíAlícia {
         int ram = 0;
 
         do {    //Ho posem dins d'un do - while per demanar-nos la opció fins que no sigui 0
-            
+
             System.out.println("+------------------------------+");
             System.out.println("|     Menú de l'aplicació:     |");
             System.out.println("|------------------------------|");
