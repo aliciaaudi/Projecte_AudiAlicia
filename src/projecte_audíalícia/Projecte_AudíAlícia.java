@@ -33,15 +33,15 @@ public class Projecte_AudíAlícia {
 
         do {    //Ho posem dins d'un do - while per demanar-nos la opció fins que no sigui 0
 
-            System.out.println("+------------------------------+");
-            System.out.println("|     Menú de l'aplicació:     |");
-            System.out.println("|------------------------------|");
-            System.out.println("|     0. Sortir                |");
-            System.out.println("|     1. Afegir Smartphone     |");
-            System.out.println("|     2. Borrar Smartphone     |");
-            System.out.println("|     3. Modificar Smartphone  |");
-            System.out.println("|     4. Llistar Smartphones   |");
-            System.out.println("|______________________________|");
+            System.out.println("+--------------------------------+");
+            System.out.println("|     Menú de l'aplicació:       |");
+            System.out.println("|--------------------------------|");
+            System.out.println("|     0. Sortir                  |");
+            System.out.println("|     1. Afegir Smartphone       |");
+            System.out.println("|     2. Borrar Smartphone       |");
+            System.out.println("|     3. Modificar Smartphone    |");
+            System.out.println("|     4. Llistar Smartphones     |");
+            System.out.println("|________________________________|");
             System.out.println("");
 
             System.out.println("Introdueix una opció del menú: ");
@@ -60,7 +60,6 @@ public class Projecte_AudíAlícia {
 
                         do {
                             System.out.println("Introdueix les polzades (pantalla):");
-                            System.out.println("Per posar decimals, indicar-ho en una ','");
                             pantalla = entrada2.nextDouble();
 
                             if (pantalla < 3.5) {
@@ -84,11 +83,25 @@ public class Projecte_AudíAlícia {
                         System.out.println("Quin sistema operatiu té?");
                         sistemaOp = entrada.nextLine();
 
-                        System.out.println("Quants megapíxels té la càmera?");
-                        megapixels = entrada2.nextDouble();
+                        do {
+                            System.out.println("Quants megapíxels té la càmera?");
+                            megapixels = entrada2.nextDouble();
 
-                        System.out.println("Quanta RAM té?");
-                        ram = entrada.nextInt();
+                            if (megapixels <= 0) {
+                                System.out.println("Valor incorrecte!");
+                            }
+
+                        } while (megapixels <= 0);
+
+                        do {
+                            System.out.println("Quanta RAM té?");
+                            ram = entrada.nextInt();
+
+                            if (ram <= 0) {
+                                System.out.println("Valor incorrecte!");
+                            }
+
+                        } while (ram <= 0);
 
                         omplert = true; // Un cop hem omplert els camps, canviem la variable a true
                     } else {
