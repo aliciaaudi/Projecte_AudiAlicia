@@ -25,6 +25,7 @@ public class Projecte_AudíAlícia {
         char tactil; // Serveix per determinar si és tactil o no (S/N)
         char dades; // Serveix per confirmar si volem veure les dades del Smartphone o no (Abans l'esborrat) (S/N)
         char esborrar; // Serveix per confirmar l'esborrat d'un Smartphone (S/N)
+        char modificar; // Serveix per confirmar si vols modificar una dada o no
 
         String model = null; // Model del Smartphone
         double pantalla = 0.0; // Polzades de la pantalla
@@ -64,7 +65,7 @@ public class Projecte_AudíAlícia {
                         model = entrada.skip("[\r\n]*").nextLine();
 
                         do {
-                            System.out.println("Introdueix les polzades (pantalla):");
+                            System.out.println("Introdueix les polzades (pantalla => 3,5):");
                             pantalla = entrada.nextDouble();
 
                             if (pantalla < 3.5) {
@@ -91,7 +92,7 @@ public class Projecte_AudíAlícia {
                         sistemaOp = entrada.skip("[\r\n]*").nextLine();
 
                         do {
-                            System.out.println("Quants megapíxels té la càmera?");
+                            System.out.println("Quants megapíxels té la càmera? (< 0)");
                             megapixels = entrada.nextDouble();
 
                             if (megapixels <= 0) {
@@ -101,7 +102,7 @@ public class Projecte_AudíAlícia {
                         } while (megapixels <= 0);
 
                         do {
-                            System.out.println("Quanta RAM té?");
+                            System.out.println("Quanta RAM té? (> 0)");
                             ram = entrada.nextInt();
 
                             if (ram <= 0) {
@@ -125,7 +126,57 @@ public class Projecte_AudíAlícia {
                     if (!omplert) {
                         System.out.println("No hi ha cap Smartphone per borrar, si el vols borrar l'hauràs d'introduïr primer.\n" + "");
                     }
-                    
+
+                    if (omplert) {
+
+                        do {
+
+                            System.out.println("Vols veure les dades del Smartphone? (S/N)");
+                            dades = entrada.skip("[\r\n]*").nextLine().charAt(0);
+
+                        } while (dades != 's' && dades != 'n' && dades != 'S' && dades != 'N');
+
+                        if (dades == 's' || dades == 'S') {
+                            System.out.println("Dades del Smartphone: ");
+                            System.out.println("Model: " + model);
+                            System.out.println("Pantalla (polzades): " + pantalla);
+
+                            if (esTactil) {
+                                System.out.println("Tàctil: Sí");
+                            }
+
+                            if (!esTactil) {
+                                System.out.println("Tàctil: No");
+                            }
+
+                            System.out.println("Sistema Operatiu: " + sistemaOp);
+                            System.out.println("Megapíxels: " + megapixels);
+                            System.out.println("RAM: " + ram);
+                        } else {
+                            break;
+                        }
+
+                        do {
+
+                            System.out.println("Segur que el vols esborrar? (S/N)");
+                            esborrar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+
+                        } while (esborrar != 's' && esborrar != 'n' && esborrar != 'S' && esborrar != 'N');
+
+                        if (esborrar == 's' || esborrar == 'S') {
+                            omplert = false;
+
+                            System.out.println("Dades del Smartphone esborrades!");
+                        }
+
+                    }
+
+                case 3: // MODIFICAR
+
+                    if (!omplert) {
+                        System.out.println("No hi ha cap Smartphone per modificar, si el vols modificar l'hauràs d'introduïr primer.\n" + "");
+                    }
+
                     if (omplert) {
 
                         do {
@@ -155,23 +206,165 @@ public class Projecte_AudíAlícia {
 
                         do {
 
-                            System.out.println("Segur que el vols esborrar? (S/N)");
-                            esborrar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            System.out.println("Vols modificar les dades del Smartphone? (S/N)");
+                            dades = entrada.skip("[\r\n]*").nextLine().charAt(0);
 
-                        } while (esborrar != 's' && esborrar != 'n' && esborrar != 'S' && esborrar != 'N');
+                        } while (dades != 's' && dades != 'n' && dades != 'S' && dades != 'N');
 
-                        if (esborrar == 's' || esborrar == 'S') {
-                            omplert = false;
+                        if (dades == 's' || dades == 'S') {
 
-                            System.out.println("Dades del Smartphone esborrades!");
+                            // MODEL
+                            
+                            System.out.println("\nModel: " + model);
+
+                            do {
+                                System.out.println("Vols modificar el model? (S/N)");
+                                modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
+
+                            if (modificar == 's' || modificar == 'S') {
+                                System.out.println("Introdueix el NOU model del Smartphone:");
+                                model = entrada.skip("[\r\n]*").nextLine();
+                            }
+
+                            // POLZADES (PANTALLA)
+                            
+                            System.out.println("\nPantalla (polzades): " + pantalla);
+
+                            do {
+                                System.out.println("Vols modificar el les polzades (pantalla)? (S/N)");
+                                modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
+
+                            if (modificar == 's' || modificar == 'S') {
+
+                                do {
+                                    System.out.println("Introdueix el NOU valor de polzades (pantalla => 3,5):");
+                                    pantalla = entrada.nextDouble();
+
+                                    if (pantalla < 3.5) {
+                                        System.out.println("Valor incorrecte!");
+                                    }
+
+                                } while (pantalla < 3.5);
+                            }
+
+                            // TÀCTIL O NO
+                            
+                            if (esTactil) {
+                                System.out.println("\nTàctil: Sí");
+                            }
+
+                            if (!esTactil) {
+                                System.out.println("\nTàctil: No");
+                            }
+
+                            do {
+                                System.out.println("Vols modificar si és tàctil o no? (S/N)");
+                                modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
+
+                            if (modificar == 's' || modificar == 'S') {
+                                do {
+                                    System.out.println("Introdueix el NOU valor per a tàctil: (S/N)");
+                                    tactil = entrada.skip("[\r\n]*").nextLine().charAt(0);
+
+                                    if (tactil == 's' || tactil == 'S') {
+                                        esTactil = true;
+                                    }
+
+                                    if (tactil == 'n' || tactil == 'N') {
+                                        esTactil = false;
+                                    }
+
+                                } while (tactil != 's' && tactil != 'n' && tactil != 'S' && tactil != 'N');
+
+                            }
+
+                            //  SISTEMA OPERATIU
+                            
+                            System.out.println("\nSistema Operatiu: " + sistemaOp);
+
+                            do {
+                                System.out.println("Vols modificar el sistema operatiu? (S/N)");
+                                modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
+
+                            if (modificar == 's' || modificar == 'S') {
+                                System.out.println("Introdueix el NOU valor per a sistema operatiu:");
+                                sistemaOp = entrada.skip("[\r\n]*").nextLine();
+                            }
+
+                            // MEGAPÍXELS
+                            
+                            System.out.println("\nMegapíxels: " + megapixels);
+
+                            do {
+                                System.out.println("Vols modificar el valor dels megapíxels? (S/N)");
+                                modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
+
+                            if (modificar == 's' || modificar == 'S') {
+                                do {
+                                    System.out.println("Introdueix el NOU valor per a megapíxels: (< 0)");
+                                    megapixels = entrada.nextDouble();
+                                    
+                                    if (megapixels <= 0) {
+                                        System.out.println("Valor incorrecte!");
+                                    }
+
+                                } while (megapixels <= 0);
+                            }
+                            
+                            // RAM
+                            
+                            System.out.println("\nRAM: " + ram);
+                            
+                            do {
+                                System.out.println("Vols modificar el valor de la RAM? (S/N)");
+                                modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
+                            } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
+                            
+                            if (modificar == 's' || modificar == 'S') {
+                                do {
+                                    System.out.println("Introdueix el NOU valor de la RAM: (> 0)");
+                                    ram = entrada.nextInt();
+
+                                    if (ram <= 0) {
+                                    System.out.println("Valor incorrecte!");
+                                    }
+
+                                } while (ram <= 0);
+                            }
+                            
+                            System.out.println("Smartphone modificat correctament.");
+                            
+                        } else {
+                            break;
                         }
 
                     }
-                    
-                case 3:
 
-                case 4:
+                case 4: // LLISTAR
+                    if (omplert == true) {
+                        System.out.println("Dades del Smartphone: ");
+                        System.out.println("Model: " + model);
+                        System.out.println("Pantalla (polzades): " + pantalla);
 
+                        if (esTactil) {
+                            System.out.println("Tàctil: Sí");
+                        }
+
+                        if (!esTactil) {
+                            System.out.println("Tàctil: No");
+                        }
+
+                        System.out.println("Sistema Operatiu: " + sistemaOp);
+                        System.out.println("Megapíxels: " + megapixels);
+                        System.out.println("RAM: " + ram);
+                    } else {
+                        System.out.println("No hi ha cap Smartphone per llistar!!");
+                    }
             }
         } while (opcio_menu != 0);
 
