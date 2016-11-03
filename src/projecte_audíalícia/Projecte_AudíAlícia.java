@@ -337,15 +337,15 @@ public class Projecte_AudíAlícia {
                                 } while (ram <= 0);
                             }
                             
-                            System.out.println("Smartphone modificat correctament.");
+                            System.out.println("\nSmartphone modificat correctament.\n");
                             
-                        } else {
                             break;
-                        }
+                        }    
 
                     }
 
                 case 4: // LLISTAR
+                
                     if (omplert == true) {
                         System.out.println("Dades del Smartphone: ");
                         System.out.println("Model: " + model);
