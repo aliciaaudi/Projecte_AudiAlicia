@@ -44,6 +44,7 @@ public class Projecte_AudíAlícia {
             System.out.println("|     2. Esborrar Smartphone       |");
             System.out.println("|     3. Modificar Smartphone      |");
             System.out.println("|     4. Llistar Smartphones       |");
+            System.out.println("|     5. Recuperar Dades           |");
             System.out.println("|__________________________________|");
             System.out.println("");
 
@@ -103,7 +104,7 @@ public class Projecte_AudíAlícia {
 
                         do {
                             System.out.println("Quanta RAM té? (> 0)");
-                            ram = entrada.nextInt();
+                            ram = entrada.skip("[\r\n]*").nextInt();
 
                             if (ram <= 0) {
                                 System.out.println("Valor incorrecte!");
@@ -122,10 +123,6 @@ public class Projecte_AudíAlícia {
                     break;
 
                 case 2: // ESBORRAR
-
-                    if (!omplert) {
-                        System.out.println("No hi ha cap Smartphone per borrar, si el vols borrar l'hauràs d'introduïr primer.\n" + "");
-                    }
 
                     if (omplert) {
 
@@ -152,9 +149,7 @@ public class Projecte_AudíAlícia {
                             System.out.println("Sistema Operatiu: " + sistemaOp);
                             System.out.println("Megapíxels: " + megapixels);
                             System.out.println("RAM: " + ram);
-                        } else {
-                            break;
-                        }
+                        } 
 
                         do {
 
@@ -167,8 +162,11 @@ public class Projecte_AudíAlícia {
                             omplert = false;
 
                             System.out.println("Dades del Smartphone esborrades!");
+                            break;
                         }
 
+                    } else {
+                        System.out.println("No hi ha cap Smartphone per borrar, si el vols borrar l'hauràs d'introduïr primer.\n" + "");
                     }
 
                 case 3: // MODIFICAR
@@ -214,7 +212,6 @@ public class Projecte_AudíAlícia {
                         if (dades == 's' || dades == 'S') {
 
                             // MODEL
-                            
                             System.out.println("\nModel: " + model);
 
                             do {
@@ -228,7 +225,6 @@ public class Projecte_AudíAlícia {
                             }
 
                             // POLZADES (PANTALLA)
-                            
                             System.out.println("\nPantalla (polzades): " + pantalla);
 
                             do {
@@ -250,7 +246,6 @@ public class Projecte_AudíAlícia {
                             }
 
                             // TÀCTIL O NO
-                            
                             if (esTactil) {
                                 System.out.println("\nTàctil: Sí");
                             }
@@ -282,7 +277,6 @@ public class Projecte_AudíAlícia {
                             }
 
                             //  SISTEMA OPERATIU
-                            
                             System.out.println("\nSistema Operatiu: " + sistemaOp);
 
                             do {
@@ -296,7 +290,6 @@ public class Projecte_AudíAlícia {
                             }
 
                             // MEGAPÍXELS
-                            
                             System.out.println("\nMegapíxels: " + megapixels);
 
                             do {
@@ -308,44 +301,43 @@ public class Projecte_AudíAlícia {
                                 do {
                                     System.out.println("Introdueix el NOU valor per a megapíxels: (< 0)");
                                     megapixels = entrada.nextDouble();
-                                    
+
                                     if (megapixels <= 0) {
                                         System.out.println("Valor incorrecte!");
                                     }
 
                                 } while (megapixels <= 0);
                             }
-                            
+
                             // RAM
-                            
                             System.out.println("\nRAM: " + ram);
-                            
+
                             do {
                                 System.out.println("Vols modificar el valor de la RAM? (S/N)");
                                 modificar = entrada.skip("[\r\n]*").nextLine().charAt(0);
                             } while (modificar != 's' && modificar != 'n' && modificar != 'S' && modificar != 'N');
-                            
+
                             if (modificar == 's' || modificar == 'S') {
                                 do {
                                     System.out.println("Introdueix el NOU valor de la RAM: (> 0)");
                                     ram = entrada.nextInt();
 
                                     if (ram <= 0) {
-                                    System.out.println("Valor incorrecte!");
+                                        System.out.println("Valor incorrecte!");
                                     }
 
                                 } while (ram <= 0);
                             }
-                            
+
                             System.out.println("\nSmartphone modificat correctament.\n");
-                            
+
                             break;
-                        }    
+                        }
 
                     }
 
                 case 4: // LLISTAR
-                
+
                     if (omplert == true) {
                         System.out.println("Dades del Smartphone: ");
                         System.out.println("Model: " + model);
@@ -364,7 +356,27 @@ public class Projecte_AudíAlícia {
                         System.out.println("RAM: " + ram);
                     } else {
                         System.out.println("No hi ha cap Smartphone per llistar!!");
+                        break;
                     }
+
+                case 5: // RECUPERAR
+                    omplert = true;
+                    
+                    System.out.println("Dades del Smartphone: ");
+                    System.out.println("Model: " + model);
+                    System.out.println("Pantalla (polzades): " + pantalla);
+
+                    if (esTactil) {
+                        System.out.println("Tàctil: Sí");
+                    }
+
+                    if (!esTactil) {
+                        System.out.println("Tàctil: No");
+                    }
+
+                    System.out.println("Sistema Operatiu: " + sistemaOp);
+                    System.out.println("Megapíxels: " + megapixels);
+                    System.out.println("RAM: " + ram);
             }
         } while (opcio_menu != 0);
 
